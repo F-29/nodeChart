@@ -1,0 +1,57 @@
+{
+  "name": "baba-5",
+  "version": "1.0.0",
+  "description": "Electron app for arduino serial readings",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start",
+    "run": " electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "Mosich",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "csv-writer": "^1.6.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.17.1",
+    "johnny-five": "^1.4.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.51",
+    "@electron-forge/maker-deb": "^6.0.0-beta.51",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.51",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.51",
+    "@electron-forge/maker-zip": "^6.0.0-beta.51",
+    "electron": "^8.2.5"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "baba_5"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}

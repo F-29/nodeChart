@@ -1,0 +1,16 @@
+* {
+    background-color: #252525;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.btn_save {
+
+}
