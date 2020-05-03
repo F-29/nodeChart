@@ -12,9 +12,9 @@ const randomData = () => {
     ];
 };
 
+let toMedian = [];
 
 function median(values) {
-    console.log(typeof values);
     values.sort((a, b) => {
         return a - b;
     });
@@ -39,17 +39,11 @@ const updateValue = () => {
             .then(res => {
                 window.myGauge.update();
                 value = res.data.value;
-                console.log(value);
             });
-        let toMedian = [];
-        config.data.datasets.forEach((dataset) => {
-            console.log("toMedian: ", typeof toMedian);
+        config.data.datasets.forEach(dataset => {
             if (toMedian.length < 5) {
-                toMedian.splice(toMedian.length, 0, value);
-                console.log("toMedian: ", typeof toMedian);
-                console.log(toMedian);
+                toMedian = toMedian.concat([value]);
             } else {
-                console.log("in else");
                 dataset.value = median(toMedian);
                 toMedian = [];
                 dataset.data = randomData();
@@ -57,10 +51,8 @@ const updateValue = () => {
             }
         });
         window.myGauge.update();
-    }, 101);
+    }, 50);
 };
-console.log("Value: ", value);
-console.log("StoreData: ", storeData);
 
 
 const config = {
@@ -123,7 +115,7 @@ const config = {
 window.onload = () => {
     let ctx = document.getElementById('chart').getContext('2d');
     window.myGauge = new Chart(ctx, config);
-    console.log("random value: ", updateValue());
+    updateValue();
 };
 //endregion
 

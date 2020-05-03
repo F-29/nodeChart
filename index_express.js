@@ -10,13 +10,13 @@ board.on("ready", () => {
 
     let sensor = new five.Sensor({
         pin: "A0",
-        freq: 100
+        freq: 50
     });
     sensor.on('data', (newValue) => {
         value = parseInt((newValue / 920.5 * 135).toString());
         setInterval(() => {
             app.get('/', (req, res) => res.json({"value": value}));
-        }, 100);
+        }, 50);
     });
 });
 
